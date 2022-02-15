@@ -1,11 +1,14 @@
-const mongoose = require('mongoose');
+const mongodb = require('mongodb').MongoClient;
 
-mongoose
-  .connect('mongodb://127.0.0.1:27017/tasks', { useNewUrlParser: true })
-  .catch((e) => {
-    console.error('Connection error', e.message);
+const MONGO_DB_URL = 'mongodb://127.0.0.1:27017/tasks';
+const DB_NAME = 'tasks';
+
+module.exports = () => mongodb.connect(MONGO_DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then((connection) => connection.db(DB_NAME))
+  .catch((err) => {
+    console.error(err.message);
+    process.exit(1);
   });
-
-const db = mongoose.connection;
-
-module.exports = db;
