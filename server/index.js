@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const errorMiddleware = require('./utils/errorMiddleware');
 
 const app = express();
 
@@ -15,3 +16,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use(errorMiddleware);
