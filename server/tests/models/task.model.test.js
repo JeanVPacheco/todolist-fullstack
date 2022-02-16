@@ -8,7 +8,7 @@ const { getConnection } = require('./mongoMockConnection');
 const mongoConnection = require('../../db');
 const taskModel = require('../../models/task.model');
 
-describe('Creates new task on the database', () => {
+describe('TaskModel - createTask', () => {
   let connectionMock;
 
   const payloadTask = {
