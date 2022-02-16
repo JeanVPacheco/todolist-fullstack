@@ -8,12 +8,15 @@ const findAllTasks = async () => {
   return tasks;
 };
 
-const createTask = async (title, description, status) => {
+const createTask = async (newTask) => {
+  const {
+    title, description, status,
+  } = newTask;
   const { error } = taskSchema.validate({ title, description, status });
   if (error) throw errorGenerator(400, error.message);
 
-  const newTask = await taskModel.createTask(title, description, status);
-  return newTask;
+  const createdTask = await taskModel.createTask(title, description, status);
+  return createdTask;
 };
 
 const editById = async (newTask) => {

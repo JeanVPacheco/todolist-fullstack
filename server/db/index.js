@@ -1,7 +1,7 @@
 const mongodb = require('mongodb').MongoClient;
 
-const MONGO_DB_URL = 'mongodb://127.0.0.1:27017/tasks';
-const DB_NAME = 'tasks';
+const MONGO_DB_URL = 'mongodb://127.0.0.1:27017/todolist';
+const DB_NAME = 'todolist';
 
 module.exports = () => mongodb.connect(MONGO_DB_URL, {
   useNewUrlParser: true,
