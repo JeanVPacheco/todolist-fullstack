@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
   res.send('Hello world!');
 });
 
+app.get('/tasks', taskController.findAllTasks);
 app.post('/tasks', taskController.createTask);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
