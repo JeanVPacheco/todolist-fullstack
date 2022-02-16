@@ -15,15 +15,6 @@ describe('TaskService - createTask', () => {
     taskModel.createTask.restore();
   });
 
-  // describe('When the body is invalid', () => {
-  //   const payloadTask = {};
-
-  //   it('throws an error', async () => {
-  //     const response = await taskService.createTask(payloadTask);
-  //     expect(response).to.be.a('object');
-  //   });
-  // });
-
   describe('When the insertion is succesfull', () => {
     const payloadTask = {
       title: 'Test task',
