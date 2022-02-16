@@ -9,15 +9,18 @@ const findAllTasks = async () => {
   return tasks;
 };
 
-const createTask = async (title, description, status) => {
+const createTask = async (newTask) => {
+  const {
+    title, description, status,
+  } = newTask;
   const conn = await connect();
 
-  const newTask = await conn.collection('tasks')
+  const createdTask = await conn.collection('tasks')
     .insertOne({
       title, description, status,
     });
 
-  return newTask;
+  return createdTask;
 };
 
 const editById = async (newTask) => {
