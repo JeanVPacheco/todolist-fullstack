@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/tasks', taskController.findAllTasks);
 app.post('/tasks', taskController.createTask);
+app.put('/tasks/:id', taskController.editById);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

@@ -16,7 +16,20 @@ const createTask = async (title, description, status) => {
   return newTask;
 };
 
+const editById = async (newTask) => {
+  const {
+    title, description, status,
+  } = newTask;
+
+  const { error } = taskSchema.validate({ title, description, status });
+  if (error) throw errorGenerator(400, error.message);
+
+  const updatedTask = await taskModel.editById(newTask);
+  return { updatedTask };
+};
+
 module.exports = {
   createTask,
   findAllTasks,
+  editById,
 };

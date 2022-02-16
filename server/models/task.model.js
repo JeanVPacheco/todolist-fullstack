@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const connect = require('../db');
 
 const findAllTasks = async () => {
@@ -19,7 +20,26 @@ const createTask = async (title, description, status) => {
   return newTask;
 };
 
+const editById = async (newTask) => {
+  const {
+    id, title, description, status,
+  } = newTask;
+
+  const conn = await connect();
+  const task = await conn.collection('tasks')
+    .updateOne(
+      { _id: ObjectId(id) },
+      { $set: { title, description, status } },
+    );
+
+  if (task.matchedCount === 0) return null;
+  return {
+    _id: id, title, description, status,
+  };
+};
+
 module.exports = {
   createTask,
   findAllTasks,
+  editById,
 };
