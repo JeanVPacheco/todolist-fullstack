@@ -38,8 +38,16 @@ const editById = async (newTask) => {
   };
 };
 
+const deleteById = async (id) => {
+  const conn = await connect();
+
+  await conn.collection('tasks')
+    .deleteOne({ _id: ObjectId(id) });
+};
+
 module.exports = {
   createTask,
   findAllTasks,
   editById,
+  deleteById,
 };
