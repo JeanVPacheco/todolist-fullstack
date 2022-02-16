@@ -1,8 +1,11 @@
 import React from 'react';
-import { AddTaskForm } from '../components';
+import { AddTaskForm, TaskList } from '../components';
 const HomePage = () => {
   return (
-    <AddTaskForm />
+    <>
+      <AddTaskForm />
+      <TaskList />
+    </>
   )
 }
 

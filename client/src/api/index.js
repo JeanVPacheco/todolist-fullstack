@@ -5,9 +5,11 @@ const api = axios.create({
 });
 
 export const createTask = (payload) => api.post('/', payload);
+export const findAllTasks = () => api.get('/')
 
 const apis = {
-  createTask
+  createTask,
+  findAllTasks
 };
 
 export default apis;
