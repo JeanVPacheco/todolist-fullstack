@@ -13,7 +13,7 @@ const createTask = async (req, res, next) => {
   const { title, description, status } = req.body;
   try {
     const tasks = await taskService.createTask(title, description, status);
-    return res.status(200).json({ tasks });
+    return res.status(201).json({ tasks });
   } catch (e) {
     return next(e);
   }
@@ -35,8 +35,20 @@ const editById = async (req, res, next) => {
   }
 };
 
+const deleteById = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    await taskService.deleteById(id);
+    return res.sendStatus(204);
+  } catch (e) {
+    return next(e);
+  }
+};
+
 module.exports = {
   createTask,
   findAllTasks,
   editById,
+  deleteById,
 };

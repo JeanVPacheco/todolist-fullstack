@@ -28,8 +28,13 @@ const editById = async (newTask) => {
   return { updatedTask };
 };
 
+const deleteById = async (id) => {
+  await taskModel.deleteById(id);
+};
+
 module.exports = {
   createTask,
   findAllTasks,
   editById,
+  deleteById,
 };
