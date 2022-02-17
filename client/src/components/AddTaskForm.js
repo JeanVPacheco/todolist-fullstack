@@ -20,7 +20,6 @@ const AddTaskForm = () => {
 
   const onCreateTask = async () => {
     const payload = { title, description, status };
-
     await apis.createTask(payload);
 
     window.alert('Task added succesfully');

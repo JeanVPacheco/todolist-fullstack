@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import apis from '../api';
+import TaskCard from './TaskCard';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  const fetchTasks = async () => {
     setIsLoading(true);
-    const fetchTasks = async () => {
-      const { data: { tasks }} = await apis.findAllTasks();
-      setTasks(tasks);
-    };
-    fetchTasks();   
+    const { data: { tasks }} = await apis.findAllTasks();
     setIsLoading(false);
+    console.log('fetch tasks');
+    console.log(tasks);
+    setTasks(tasks);
+  };
+
+  useEffect(() => {
+    fetchTasks();
   }, []);
 
   const loadingElement = <p>Loading...</p>;
 
   const taskList = tasks.map((task) => {
-    return <div className='single-task' key={task._id}>
-      <p>{task.title}</p>
-      <p>{task.description}</p>
-      <p>{task.status}</p>
-    </div>
+    return <TaskCard task={task} fetchTasks={fetchTasks} key={task._id} />
   })
 
   return (

@@ -4,12 +4,14 @@ const api = axios.create({
   baseURL: 'http://localhost:3001/tasks',
 });
 
-export const createTask = (payload) => api.post('/', payload);
-export const findAllTasks = () => api.get('/')
+const createTask = (payload) => api.post('/', payload);
+const findAllTasks = () => api.get('/')
+const deleteById = (id) => api.delete(`/${id}`);
 
 const apis = {
   createTask,
-  findAllTasks
+  findAllTasks,
+  deleteById
 };
 
 export default apis;
