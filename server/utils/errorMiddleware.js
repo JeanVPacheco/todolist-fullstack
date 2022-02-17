@@ -3,5 +3,6 @@ module.exports = (err, _req, res, _next) => {
     const { errCode, message } = err;
     return res.status(errCode).json({ message });
   }
+  console.log(err.message);
   return res.status(500).json({ message: 'Internal error' });
 };

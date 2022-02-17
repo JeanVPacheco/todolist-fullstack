@@ -15,7 +15,7 @@ const createTask = async (newTask) => {
   const { error } = taskSchema.validate({ title, description, status });
   if (error) throw errorGenerator(400, error.message);
 
-  const createdTask = await taskModel.createTask(title, description, status);
+  const createdTask = await taskModel.createTask(newTask);
   return createdTask;
 };
 

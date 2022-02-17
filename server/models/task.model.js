@@ -13,7 +13,9 @@ const createTask = async (newTask) => {
   const {
     title, description, status,
   } = newTask;
+  console.log(newTask);
   const conn = await connect();
+  console.log(newTask);
 
   const createdTask = await conn.collection('tasks')
     .insertOne({
@@ -43,7 +45,6 @@ const editById = async (newTask) => {
 
 const deleteById = async (id) => {
   const conn = await connect();
-
   await conn.collection('tasks')
     .deleteOne({ _id: ObjectId(id) });
 };
